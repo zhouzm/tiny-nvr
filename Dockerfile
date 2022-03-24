@@ -7,10 +7,11 @@
 #       rtsp://username:password@address:port//Streaming/Channels/2 \
 #       camera1
 
-FROM alpine:3.8
+FROM alpine:3.15
 
 LABEL version="1.0" \
-      maintainer="hpaolini"
+      maintainer="hpaolini" \
+      Modifier="zhouzm"
 
 # TZ                    : set your timezone, lookup your location in the "tz database"
 # DIR_NAME_FORCE        : if set to "true", forces the use of the folder name **WARNING: 
@@ -21,16 +22,16 @@ LABEL version="1.0" \
 # VIDEO_FORMAT          : save output as mkv or mp4 file
 #                         (if you get format errors try changing the format)
 
-ENV TZ=Europe/Rome \
+ENV TZ=Asia/Shanghai \
     DIR_NAME_FORCE=false \
     HOUSEKEEP_ENABLED=true \
     HOUSEKEEP_DAYS=3 \
     VIDEO_SEGMENT_TIME=900 \
-    VIDEO_FORMAT=mp4
+    VIDEO_FORMAT=mkv
 
-ENV BASH_VERSION=4.4.19-r1 \
-    TZDATA_VERSION=2018f-r0 \
-    FFMPEG_VERSION=3.4.4-r1
+ENV BASH_VERSION=5.1.16-r0 \
+    TZDATA_VERSION=2022a-r0 \
+    FFMPEG_VERSION=4.4.1-r2
 
 RUN apk update \
     && apk add bash=$BASH_VERSION tzdata=$TZDATA_VERSION ffmpeg=$FFMPEG_VERSION \
